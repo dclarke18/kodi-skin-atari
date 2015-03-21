@@ -8,16 +8,4 @@
 	</buildSpec>
 	<natures>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>skin.atari-confluence</name>
-			<type>2</type>
-			<location>/Applications/Kodi.app/Contents/Resources/Kodi/addons/skin.atari-confluence</location>
-		</link>
-		<link>
-			<name>skin.atari-foundation</name>
-			<type>2</type>
-			<location>/Applications/Kodi.app/Contents/Resources/Kodi/addons/skin.atari-foundation</location>
-		</link>
-	</linkedResources>
 </projectDescription>
