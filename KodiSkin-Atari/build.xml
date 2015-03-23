@@ -4,17 +4,15 @@
         Skin for the Kodi media library
     </description>
 	<!-- set global properties for this build -->
-	<property name="src" location="skin.atari-foundation" />
-	<property name="build" location="build" />
+	<property name="src" location="src" />
+	<!--<property name="build" location="build" />-->
 	<property name="dist" location="dist" />
-	
-	<property name="kodi-addons" location="/Applications/Kodi.app/Contents/Resources/Kodi/addons"/>
+
+	<property name="kodi-addons" location="/Applications/Kodi.app/Contents/Resources/Kodi/addons" />
 
 	<target name="init">
 		<!-- Create the time stamp -->
 		<tstamp />
-		<!-- Create the build directory structure used by compile -->
-		<mkdir dir="${build}" />
 	</target>
 
 	<target name="dist" depends="init" description="generate the distribution">
@@ -22,13 +20,15 @@
 		<mkdir dir="${dist}" />
 		<zip zipfile="${dist}/KodiSkin-Atari-${DSTAMP}.zip" basedir="${build}">
 			<fileset dir="${src}">
-				<exclude name=".*" />
+				<include name="skin.atari-foundation/**/*.*"/>
+				<exclude name=".*"/>
 			</fileset>
 		</zip>
 	</target>
 	<target name="deploy" depends="init" description="">
 		<copy todir="${kodi-addons}">
 			<fileset dir="${src}">
+				<include name="skin.atari-foundation/**/*.*" />
 				<exclude name=".*" />
 			</fileset>
 		</copy>
