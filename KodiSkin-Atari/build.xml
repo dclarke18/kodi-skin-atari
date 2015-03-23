@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="KodiSkin-Atari" default="dist" basedir=".">
+	<description>
+        Skin for the Kodi media library
+    </description>
+	<!-- set global properties for this build -->
+	<property name="src" location="skin.atari-foundation" />
+	<property name="build" location="build" />
+	<property name="dist" location="dist" />
+	
+	<property name="kodi-addons" location="/Applications/Kodi.app/Contents/Resources/Kodi/addons"/>
+
+	<target name="init">
+		<!-- Create the time stamp -->
+		<tstamp />
+		<!-- Create the build directory structure used by compile -->
+		<mkdir dir="${build}" />
+	</target>
+
+	<target name="dist" depends="init" description="generate the distribution">
+		<!-- Create the distribution directory -->
+		<mkdir dir="${dist}" />
+		<zip zipfile="${dist}/KodiSkin-Atari-${DSTAMP}.zip" basedir="${build}">
+			<fileset dir="${src}">
+				<exclude name=".*" />
+			</fileset>
+		</zip>
+	</target>
+	<target name="deploy" depends="init" description="">
+		<copy todir="${kodi-addons}">
+			<fileset dir="${src}">
+				<exclude name=".*" />
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="clean" description="clean up">
+		<!-- Delete the ${build} and ${dist} directory trees -->
+		<delete dir="${build}" />
+		<delete dir="${dist}" />
+	</target>
+</project>
